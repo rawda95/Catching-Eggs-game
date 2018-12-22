@@ -3,14 +3,6 @@ function Player(name) {
     this.name = name;
     this.score = 0;
 
-
-    this.incressScore = function() {
-        score++;
-
-    }
-    this.descressScore = function() {
-        score--;
-    }
 }
 
 
@@ -18,22 +10,26 @@ function Leval(target, type, player) {
     this.target = target;
     this.type = type;
     this.player = player;
+    this.timer = "";
 
     //Interval
     white = "";
     goold = "";
     black = "";
+    idOfEgge = 0; // for img id
 
-    this.DrowEgges = function(color, anmationSpped) {
-            idOfEgge = 0; // for img id 
+
+    this.DrowEgg = function(color, anmationSpped) {
+
             e1 = new Egge(color, idOfEgge);
             e1.drow();
             e1.anmation(anmationSpped, this.player);
             idOfEgge++;
 
 
-        }
-        // check for win or not 
+        } //end of drow egg
+
+    // check for win or not 
     this.end = function() {
         //if he lose 
         //if targer == player.score  show div win
@@ -46,34 +42,57 @@ function Leval(target, type, player) {
         // play audio for lose
     }
 
-    //start the level 
-    this.start = function() {
+
+    // setInterval for all type of eggs
+    this.DrowEggs = function() {
         obj = this;
         //Interval if level is easy just play the white one 
 
+
         white = setInterval(function() {
-            obj.DrowEgges('white', 400);
+            obj.DrowEgg('white', 1500);
 
         }, 1500);
+
         //else  play all 
-        goold = setInterval(function() {
-            obj.DrowEgges('goold', 2000);
-        }, 2000);
-        black = setInterval(function() {
-            obj.DrowEgges('black', 1500);
-        }, 2300);
+        if (obj.type == "Normal") {
+            goold = setInterval(function() {
+                obj.DrowEgg('goold', 2000);
+            }, 2000);
+            black = setInterval(function() {
+                obj.DrowEgg('black', 1500);
+            }, 2300);
+        }
+    }
 
+    //start the level 
+    this.start = function() {
+
+        this.DrowEggs();
         //timer for level 
-        setTimeout(function() {
 
-            //if level is easy clear the white only
+
+        this.timer = new Timer(function() {
             clearInterval(white);
             clearInterval(goold);
             clearInterval(black);
 
             // the function to check if he win
             obj.end();
-        }, 10000);
+        }, 30000);
+
+        /* setTimeout(function() {
+
+              //if level is easy clear the white only
+              clearInterval(white);
+              clearInterval(goold);
+              clearInterval(black);
+
+              // the function to check if he win
+              obj.end();
+          }, 10000);
+          */
+
 
     }
 
@@ -89,14 +108,18 @@ function Leval(target, type, player) {
         clearInterval(white);
         clearInterval(goold);
         clearInterval(black);
+        obj = this;
+        obj.timer.pause();
+
     }
 
     //resume after pouse 
     this.resume = function() {
         // start anmtion  for egge in screen
         Anmation(1500, this.player, $(".eggs"));
-        // start level 
-        this.start();
+        obj = this;
+        obj.timer.resume(); // start level
+        this.DrowEggs();
         // make basket move 
         BasketMove();
 
@@ -195,13 +218,27 @@ function Anmation(speed, player, img, incScore) {
 
         //check nada 
         // if ege in basket 
-        player.score += incScore;
-        $("#s").text("Score:" + player.score);
+        basket = $("#basket");
+        eggTop = parseInt(img.css("top"));
+        basketTop = parseInt(basket.css("top"));
+        eggLeft = parseInt(img.css("left"));
+        basketLeft = parseInt(basket.css("left"));
+        eggHeight = parseInt(img.css("height"));
+        eggWidth = parseInt(img.css("width"));
+        basketWidth = parseInt(basket.css("width"));
+        var score = 0;
+        if (basketTop <= (eggTop + eggHeight) && (eggLeft >= basketLeft &&
+                eggLeft <= (basketWidth + basketLeft))) {
 
-        //else
-        this.src = "/Images/chicken-egg-shell-icon5.png";
-        // audio.play();
-        Egge.destroy(this.id);
+            player.score += incScore;
+            $("#s").text("Score:" + player.score);
+            alert("a");
+        } // end check 
+        else {
+            this.src = "/Images/chicken-egg-shell-icon5.png";
+            // audio.play();
+            Egge.destroy(this.id);
+        }
 
 
 
@@ -235,7 +272,7 @@ Egge.destroy = function(id) {
 //move basket
 function BasketMove() {
     basket = $("#basket");
-    divbasket = $("#basket");
+    //    divbasket = $("#basket");
 
     $("body").on("mousemove", function(event) {
         x = event.pageX;
@@ -246,10 +283,37 @@ function BasketMove() {
     }); //move basket
 }
 
+
+//timer function 
+
+
+
+function Timer(callback, delay) {
+    var timerId, start, remaining = delay;
+
+    this.pause = function() {
+        window.clearTimeout(timerId);
+        remaining -= new Date() - start;
+    };
+
+    this.resume = function() {
+        start = new Date();
+        window.clearTimeout(timerId);
+        timerId = window.setTimeout(callback, remaining);
+    };
+
+    this.resume();
+}
+//end timer 
+
 //main function
 $(function() {
+
+    name = $(".entername").val();
+    p = new Player(name);
+
+
     BasketMove();
-    p = new Player();
-    l1 = new Leval(20, "normal", p);
+    l1 = new Leval(20, "Normal", p);
     l1.start();
 });

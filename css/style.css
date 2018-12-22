@@ -1,0 +1,111 @@
+body {
+    margin: 0px
+}
+
+.container {
+    height: 100%;
+    background-image: url("/Images/homebg.jpg");
+    background-size: cover;
+    background-repeat: round;
+}
+
+.gamesound {
+    padding-left: 30px;
+    padding-top: 30px;
+    display: inline-block;
+}
+
+.playaudio:hover,
+.stopaudio:hover {
+    cursor: pointer;
+}
+
+.gamepause {
+    display: inline-block;
+}
+
+.playaudio {
+    display: none;
+}
+
+.container .eggs {
+    position: absolute;
+    left: 31%;
+    top: 135px;
+}
+
+.eggs img {
+    position: absolute;
+    top: 0px;
+}
+
+.eggs .eggmove {
+    padding-left: 40px;
+}
+
+.container h1 {
+    font-size: 40px;
+    color: white;
+    font-family: cursive;
+    position: absolute;
+    left: 61%;
+    top: 50px;
+}
+
+.container .form {
+    padding-top: 30px;
+    padding-left: 30px;
+}
+
+.container .form input[type="text"] {
+    height: 40px;
+    width: 280px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.container .form input[type="button"] {
+    margin-top: 20px;
+    margin-right: 20px;
+    font-size: 18px;
+    height: 40px;
+    width: 128px;
+}
+
+.textaddclass {
+    background-color: rgb(224, 239, 236);
+    border: 1px solid #000;
+    box-shadow: 4px 4px 10px #000;
+}
+
+.btnaddclass1 {
+    color: white;
+    background-color: brown;
+    border: 1px solid #000;
+    box-shadow: 4px 4px 10px #000;
+}
+
+.btnaddclass2 {
+    color: lavender;
+    background-color: rgb(235, 75, 75);
+    border: 1px solid brown;
+    box-shadow: 4px 4px 4px gray;
+    cursor: pointer;
+}
+
+.headaddclass {
+    color: white;
+    text-shadow: 4px 4px 4px #000;
+}
+
+.headremoveclass {
+    color: bisque;
+    text-shadow: 4px 4px 4px #010101;
+}
+
+.chicken_move {
+    width: 150px;
+    position: absolute;
+    left: 850px;
+    top: 75%;
+}
