@@ -34,6 +34,8 @@ $(function() {
     eggmove = $(".eggmove");
     chicken_move = $(".chicken_move");
     chichencounter = 850;
+
+
     //end variables
 
     entername.addClass("textaddclass"); //add class for name textbox
@@ -50,11 +52,11 @@ $(function() {
         normalbtn.removeClass("btnaddclass2");
         normalbtn.addClass("btnaddclass1");
     }); //normal button when mouse out
-    //easybtn.on("click", function() {
-    //  PlayerName = $(".entername").val();
-    //LevelType = "easy";
-    //window.location.href = 'Game.html';
-    //}); // easy button on click
+    easybtn.on("click", function() {
+        localStorage.setItem("PlayerName", $(".entername").val());
+        localStorage.setItem("LevelType", "easy");
+        window.location.href = 'Game.html';
+    }); // easy button on click
     easybtn.on("mouseover", function() {
         easybtn.removeClass("btnaddclass1");
         easybtn.addClass("btnaddclass2");

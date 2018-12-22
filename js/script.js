@@ -300,8 +300,9 @@ function Timer(callback, delay) {
 //main function
 $(function() {
 
-    var player = new Player("playerName");
-    var lev1 = new Leval(20, "Normal", player);
+    var player = new Player(localStorage.getItem("PlayerName"));
+
+    var lev1 = new Leval(20, localStorage.getItem("easy"), player);
     BasketMove();
     lev1.start();
 
