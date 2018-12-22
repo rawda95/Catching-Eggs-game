@@ -12,6 +12,7 @@ function Leval(target, type, player) {
     this.type = type;
     this.player = player;
     this.timer = "";
+    $("#life").text(target);
 
     //Interval
     white = "";
