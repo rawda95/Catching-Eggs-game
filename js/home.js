@@ -41,9 +41,11 @@ $(function() {
     entername.addClass("textaddclass"); //add class for name textbox
     normalbtn.addClass("btnaddclass1"); //add class for normal button
     easybtn.addClass("btnaddclass1"); //add class for easy button
-    // normalbtn.on("click",function(){
-    //   window.location.href = 'testpage.html'
-    // });//normal button on click
+    normalbtn.on("click", function() {
+        localStorage.setItem("PlayerName", $(".entername").val());
+        localStorage.setItem("LevelType", "Normal");
+        window.location.href = 'Game.html';
+    }); //normal button on click
     normalbtn.on("mouseover", function() {
         normalbtn.removeClass("btnaddclass1");
         normalbtn.addClass("btnaddclass2");
