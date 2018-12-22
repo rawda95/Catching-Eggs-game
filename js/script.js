@@ -35,7 +35,7 @@ function Leval(target, type, player) {
 
         //if targer == player.score  show div win
         // player win
-        if (target == playerscore) {
+        if (target == player.score) {
             // show win div
             //play win sound 
         } else {
@@ -168,7 +168,7 @@ function Egge(color, id) {
             this.image.style.position = 'absolute';
             this.image.style.marginRight = "30px";
             this.image.style.marginLeft = "30px";
-            this.image.style.marginTop = "30px";
+            //this.image.style.marginTop = "30px";
 
             this.image.style.left = this.posx + "px";
 
@@ -206,7 +206,7 @@ function Egge(color, id) {
 function Anmation(speed, player, img, incScore) {
 
     img.animate({
-        "margin-top": "450px",
+        "margin-top": "400px",
     }, speed, function() {
         //Animation complete.
 
@@ -266,6 +266,13 @@ Egge.destroy = function(id) {
 //move basket
 function BasketMove() {
     basket = $("#basket");
+
+    basket.css({
+        width: "200",
+        height: "200",
+        position: "absolute",
+        left: "5"
+    }); //css for basket
     //    divbasket = $("#basket");
 
     $("body").on("mousemove", function(event) {
@@ -302,12 +309,8 @@ $(function() {
 
     var player = new Player(localStorage.getItem("PlayerName"));
 
-    var lev1 = new Leval(20, localStorage.getItem("easy"), player);
+    var lev1 = new Leval(20, localStorage.getItem("LevelType"), player);
     BasketMove();
     lev1.start();
 
 });
-
-function Easy(playerName) {
-
-};
