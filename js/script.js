@@ -2,6 +2,7 @@
 function Player(name) {
     this.name = name;
     this.score = 0;
+    $("#UserName").text(name);
 
 }
 
@@ -31,15 +32,21 @@ function Leval(target, type, player) {
 
     // check for win or not 
     this.end = function() {
-        //if he lose 
-        //if targer == player.score  show div win
-        // play audio for win
 
-        var audio = new Audio("/Audio/1.wav");
-        audio.play();
-        //else 
-        // show div lose 
-        // play audio for lose
+        //if targer == player.score  show div win
+        // player win
+        if (target == playerscore) {
+            // show win div
+            //play win sound 
+        } else {
+            //else 
+            // show div lose 
+            // play audio for lose
+            var audio = new Audio("/Audio/1.wav");
+            audio.play();
+        }
+
+
     }
 
 
@@ -47,7 +54,6 @@ function Leval(target, type, player) {
     this.DrowEggs = function() {
         obj = this;
         //Interval if level is easy just play the white one 
-
 
         white = setInterval(function() {
             obj.DrowEgg('white', 1500);
@@ -70,8 +76,6 @@ function Leval(target, type, player) {
 
         this.DrowEggs();
         //timer for level 
-
-
         this.timer = new Timer(function() {
             clearInterval(white);
             clearInterval(goold);
@@ -81,17 +85,7 @@ function Leval(target, type, player) {
             obj.end();
         }, 30000);
 
-        /* setTimeout(function() {
 
-              //if level is easy clear the white only
-              clearInterval(white);
-              clearInterval(goold);
-              clearInterval(black);
-
-              // the function to check if he win
-              obj.end();
-          }, 10000);
-          */
 
 
     }
@@ -285,9 +279,6 @@ function BasketMove() {
 
 
 //timer function 
-
-
-
 function Timer(callback, delay) {
     var timerId, start, remaining = delay;
 
@@ -309,11 +300,13 @@ function Timer(callback, delay) {
 //main function
 $(function() {
 
-    name = $(".entername").val();
-    p = new Player(name);
-
-
+    var player = new Player("playerName");
+    var lev1 = new Leval(20, "Normal", player);
     BasketMove();
-    l1 = new Leval(20, "Normal", p);
-    l1.start();
+    lev1.start();
+
 });
+
+function Easy(playerName) {
+
+};
