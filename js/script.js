@@ -204,38 +204,52 @@ function Egge(color, id) {
 
 //add anmtion to egg
 function Anmation(speed, player, img, incScore) {
+    mov = parseFloat($("#basket").css("top"));
+    basket = $("#basket");
 
+
+    //mov += 40;
     img.animate({
-        "margin-top": "400px",
-    }, speed, function() {
-        //Animation complete.
+        // "margin-top": "370px",
+        "top": 440 + 'px',
 
-        //check nada 
-        // if ege in basket 
-        basket = $("#basket");
-        eggTop = parseInt(img.css("top"));
-        basketTop = parseInt(basket.css("top"));
-        eggLeft = parseInt(img.css("left"));
-        basketLeft = parseInt(basket.css("left"));
-        eggHeight = parseInt(img.css("height"));
-        eggWidth = parseInt(img.css("width"));
-        basketWidth = parseInt(basket.css("width"));
-        var score = 0;
-        if (basketTop <= (eggTop + eggHeight) && (eggLeft >= basketLeft &&
-                eggLeft <= (basketWidth + basketLeft))) {
+    }, {
+        duration: speed,
+        step: function() {
+            console.log(this);
+            eggTop = parseInt($(this).css("top"));
+            basketTop = parseInt(basket.css("top")) + 60;
+            eggLeft = parseInt($(this).css("left"));
+            basketLeft = parseInt(basket.css("left"));
+            eggHeight = parseInt($(this).css("height"));
+            eggWidth = parseInt($(this).css("width"));
+            basketWidth = parseInt(basket.css("width"));
 
-            player.score += incScore;
-            $("#s").text("Score:" + player.score);
-            alert("a");
-        } // end check 
-        else {
+            if (basketTop <= (eggTop + eggHeight) && (eggLeft >= basketLeft &&
+                    eggLeft <= (basketWidth + basketLeft))) {
+
+                $(this).hide();
+                player.score += incScore;
+                incScore = 0;
+                $("#s").text("Score:" + player.score);
+
+
+                // alert("a");
+            }
+
+
+        },
+
+        complete: function() {
+
             this.src = "/Images/chicken-egg-shell-icon5.png";
             // audio.play();
             Egge.destroy(this.id);
+            //   }
+
+
+
         }
-
-
-
     });
 }
 
@@ -273,6 +287,7 @@ function BasketMove() {
         position: "absolute",
         left: "5"
     }); //css for basket
+
     //    divbasket = $("#basket");
 
     $("body").on("mousemove", function(event) {
@@ -307,10 +322,9 @@ function Timer(callback, delay) {
 //main function
 $(function() {
 
-    var player = new Player(localStorage.getItem("PlayerName"));
-
-    var lev1 = new Leval(20, localStorage.getItem("LevelType"), player);
+    player = new Player(localStorage.getItem("PlayerName"));
+    level = new Leval(20, localStorage.getItem("LevelType"), player);
     BasketMove();
-    lev1.start();
+    level.start();
 
 });

@@ -113,6 +113,10 @@ body {
     z-index: 15;
 }
 
+.eggs {
+    z-index: 16;
+}
+
 #basketscore {
     position: absolute;
     color: #424242;
