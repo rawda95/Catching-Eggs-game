@@ -184,13 +184,23 @@ function Egge(color, id) {
 
             // add audio 
             if (soundflag) {
-                duck = new Audio("/Audio/duck.mp3");
-                const playPromise = duck.play();
-                if (playPromise !== null) {
-                    playPromise.catch(() => {
-                        duck.play();
-                    })
-                }
+
+                var btn = document.getElementById('btn');
+                document.addEventListener(btn, function() {
+                    duck = new Audio("/Audio/duck.mp3");
+                    const playPromise = duck.play();
+                    if (playPromise !== null) {
+                        playPromise.catch(() => {
+                            duck.play();
+                        })
+                    }
+
+                }, false);
+                btn.click();
+
+
+
+
             }
 
             this.image.style.left = this.posx + "px";
