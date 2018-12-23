@@ -1,0 +1,448 @@
+/* reset Page */
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+#container {
+    height: 100%;
+    width: 100%;
+    background: url('../Images/Dog-House-Cartoon-1920x1200.jpg');
+    background-size: cover;
+    background-repeat: round;
+}
+
+#scorebar {
+    margin-top: 20px;
+    display: inline-block;
+    font-weight: bold;
+    color: forestgreen;
+    font-size: 25px;
+    font-size: xx-large;
+}
+
+#UserName {
+    color: sienna;
+}
+
+#l {
+    float: right;
+    margin-left: 385px;
+}
+
+#s {
+    margin-left: 200px;
+    word-spacing: 0px;
+}
+
+#lf {
+    display: inline;
+    position: relative;
+    bottom: 17px;
+    right: 12px;
+}
+
+#score {
+    text-align: left;
+    color: sienna;
+}
+
+.egg {
+    position: absolute;
+    top: 18%;
+    height: 8%;
+    width: 4%;
+    background-color: #fff;
+    border-radius: 50%;
+    z-index: 15;
+    background: url('../Images/easter-egg-3-icon4.png');
+    background-size: cover;
+    background-repeat: round;
+}
+
+#egg1 {
+    left: 190px;
+}
+
+#egg2 {
+    left: 380px;
+}
+
+#egg3 {
+    left: 570px;
+}
+
+#egg4 {
+    left: 760px;
+}
+
+#egg5 {
+    left: 950px;
+}
+
+#egg6 {
+    left: 1140px;
+}
+
+.chick {
+    margin-left: 370px;
+    display: block;
+    position: absolute;
+    bottom: 0px;
+    height: 15%;
+    width: 7%;
+    background: url('../Images/chicken-egg-shell-icon1.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 15;
+}
+
+#floor {
+    position: absolute;
+    height: 7%;
+    width: 100%;
+    bottom: 0;
+    z-index: 10;
+}
+
+#basket {
+    height: 100px;
+    width: 93px;
+    position: absolute;
+    bottom: 5px;
+    background: url('../Images/basket.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
+}
+
+#basketscore {
+    position: absolute;
+    color: #424242;
+    font-size: 30px;
+    top: 45%;
+    left: 30%;
+}
+
+#life {
+    text-align: right;
+    color: sienna;
+}
+
+#GameOver {
+    border: 0;
+    position: sticky;
+    height: 30%;
+    width: 301px;
+    margin-left: 500px;
+    border-radius: 139px;
+    background-color: brown;
+    color: white;
+    top: 30%;
+    font-size: 35px;
+    display: none;
+    cursor: pointer;
+    font-family: angrybirds;
+    font-size: -webkit-xxx-large;
+    outline: none;
+}
+
+#GameOver:hover {
+    color: bisque
+}
+
+#Pause {
+    border: 0;
+    position: sticky;
+    height: 50px;
+    width: 100px;
+    margin-left: 200px;
+    border-radius: 139px;
+    background-color: brown;
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+    font-family: angrybirds;
+    outline: none;
+}
+
+#Pause:hover {
+    color: gold;
+}
+
+#PauseDiv {
+    border: 0;
+    position: absolute;
+    height: 25%;
+    width: 290px;
+    margin-left: 500px;
+    border-radius: 83px;
+    background-color: brown;
+    color: white;
+    top: 35%;
+    font-size: 35px;
+    display: none;
+    cursor: pointer;
+    font-family: angrybirds;
+    font-size: -webkit-xxx-large;
+    outline: none;
+    font-family: angrybirds;
+}
+
+#PauseDiv:hover {
+    color: gold;
+    font-family: angrybirds;
+    cursor: pointer;
+}
+
+#p {
+    position: relative;
+    left: 76px;
+    top: 17px;
+    font-family: angrybirds;
+    font-size: larger;
+}
+
+#Resume {
+    background-color: gold;
+    position: relative;
+    left: 70px;
+    width: 150px;
+    height: 50px;
+    border-radius: 40px;
+    top: 9px;
+    font-family: angrybirds;
+    font-size: 23px;
+    outline: none;
+    cursor: pointer;
+}
+
+#Resume:hover {
+    color: darkslategray;
+}
+
+#WinLoseDiv {
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-repeat: round;
+    background-color: white;
+    display: none;
+    width: 424px;
+    height: 500px;
+    border-radius: 130px;
+    border-top-left-radius: 600px;
+    border-top-right-radius: 600px;
+    border-bottom-left-radius: 450px;
+    border-bottom-right-radius: 450px;
+    margin-left: 446px;
+    z-index: 9000;
+    position: absolute;
+}
+
+#menu {
+    position: fixed;
+    top: 280px;
+    left: 460px;
+    right: 0px;
+    bottom: 0px;
+    z-index: 10000;
+}
+
+#back {
+    display: none;
+    background: rgba(43, 46, 56, 0.9);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    position: fixed;
+    z-index: 10;
+    top: -5000px;
+    right: -5000px;
+    bottom: -5000px;
+    left: -5000px;
+}
+
+#WL {
+    display: block;
+    margin-left: 30px;
+    position: absolute;
+    top: -110px;
+    font-family: angrybirds;
+    font-size: 45px;
+    color: gold;
+}
+
+#ws {
+    display: block;
+    margin-left: 100px;
+    position: absolute;
+    top: -50px;
+    font-family: angrybirds;
+    font-size: 24px;
+    color: gold;
+}
+
+#btnStart,
+#easy,
+#hard,
+#btnAbout,
+#btnExit,
+#hm {
+    width: 400px;
+    height: 60px;
+    outline: none;
+    font-family: angrybirds;
+    font-size: -webkit-xxx-large;
+    background: darkblue;
+    color: white;
+    border-color: darkblue;
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+
+#btnExit {
+    margin-left: 73px;
+    width: 255px;
+}
+
+#easy,
+#hard {
+    width: 200px;
+    display: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+#btnStart:hover,
+#easy:hover,
+#hard:hover,
+#btnAbout:hover,
+#btnExit:hover {
+    background-color: #EB4B4B;
+    border-color: #EB4B4B;
+}
+
+
+/**/
+
+body {
+    margin: 0px
+}
+
+.container {
+    height: 100%;
+    background-image: url("../Images/Dog-House-Cartoon-1920x1200.jpg");
+    background-size: cover;
+    background-repeat: round;
+}
+
+.gamesound {
+    padding-left: 30px;
+    padding-top: 30px;
+    display: inline-block;
+}
+
+.playaudio:hover,
+.stopaudio:hover {
+    cursor: pointer;
+}
+
+.gamepause {
+    display: inline-block;
+}
+
+.playaudio {
+    display: none;
+}
+
+.container .eggs {
+    position: absolute;
+    left: 31%;
+    top: 135px;
+}
+
+.eggs img {
+    position: absolute;
+    top: 0px;
+}
+
+.eggs .eggmove {
+    padding-left: 40px;
+}
+
+.container h1 {
+    font-size: 40px;
+    color: white;
+    font-family: cursive;
+    position: absolute;
+    left: 61%;
+    top: 50px;
+}
+
+.container .form {
+    padding-top: 30px;
+    padding-left: 30px;
+}
+
+.container .form input[type="text"] {
+    height: 40px;
+    width: 280px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.container .form input[type="button"] {
+    margin-top: 20px;
+    margin-right: 20px;
+    font-size: 18px;
+    height: 40px;
+    width: 128px;
+}
+
+.textaddclass {
+    background-color: rgb(224, 239, 236);
+    border: 1px solid #000;
+    box-shadow: 4px 4px 10px #000;
+}
+
+.btnaddclass1 {
+    color: white;
+    background-color: brown;
+    border: 1px solid #000;
+    box-shadow: 4px 4px 10px #000;
+}
+
+.btnaddclass2 {
+    color: lavender;
+    background-color: rgb(235, 75, 75);
+    border: 1px solid brown;
+    box-shadow: 4px 4px 4px gray;
+    cursor: pointer;
+}
+
+.headaddclass {
+    color: white;
+    text-shadow: 4px 4px 4px #000;
+}
+
+.headremoveclass {
+    color: bisque;
+    text-shadow: 4px 4px 4px #010101;
+}
+
+.chicken_move {
+    width: 150px;
+    position: absolute;
+    left: 850px;
+    top: 75%;
+}
+
+@font-face {
+    font-family: angrybirds;
+    src: url('../font/angrybirds-regular.ttf');
+}

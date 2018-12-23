@@ -34,12 +34,20 @@ function Leval(target, type, player) {
     // check for win or not 
     this.end = function() {
 
+        $("#back").css("display", "block");
+        $("#WinLoseDiv").css("display", "block");
+        $("body").off("mousemove");
+
+        divText = $("#WL");
+        scoreDiv = $("#ws");
         //if targer == player.score  show div win
         // player win
-        if (target == player.score) {
+        if (this.target <= player.score) {
             // show win div
             //play win sound 
+            scoreDiv.text("Your Score is :" + this.player.score);
             if (soundflag) {
+
                 var win = new Audio("/Audio/winn.mp3");
                 win.play();
             }
@@ -47,6 +55,12 @@ function Leval(target, type, player) {
             //else 
             // show div lose 
             // play audio for lose
+            //   $("#back").css("display", "none");
+            // $("#WinLoseDiv").css("display", "none");
+            divText.text("Sorry try again");
+            scoreDiv.text("Your Score is :" + this.player.score);
+
+
             if (soundflag) {
                 var loser = new Audio("/Audio/loser.mp3");
                 loser.play();
@@ -117,7 +131,7 @@ function Leval(target, type, player) {
     //resume after pouse 
     this.resume = function() {
         // start anmtion  for egge in screen
-        Anmation(1500, this.player, $(".eggs"));
+        Anmation(1500, this.player, $(".eggs"), 1);
         obj = this;
         obj.timer.resume(); // start level
         this.DrowEggs();
@@ -180,15 +194,21 @@ function Egge(color, id) {
             this.image.style.marginRight = "30px";
             this.image.style.marginLeft = "30px";
             //this.image.style.marginTop = "30px";
+            this.image.style.left = this.posx + "px";
+
 
 
             // add audio 
             if (soundflag) {
 
                 var btn = document.getElementById('btn');
+                duck = new Audio("/Audio/duck.mp3");
+                duck.play();
+
                 document.addEventListener(btn, function() {
                     duck = new Audio("/Audio/duck.mp3");
                     const playPromise = duck.play();
+
                     if (playPromise !== null) {
                         playPromise.catch(() => {
                             duck.play();
@@ -197,13 +217,8 @@ function Egge(color, id) {
 
                 }, false);
                 btn.click();
-
-
-
-
             }
 
-            this.image.style.left = this.posx + "px";
 
             // image.hight = "100px";
             $("#container").append(this.image);
@@ -237,10 +252,10 @@ function Egge(color, id) {
 
 //add anmtion to egg
 function Anmation(speed, player, img, incScore) {
+
+
     mov = parseFloat($("#basket").css("top"));
     basket = $("#basket");
-
-
     //mov += 40;
     img.animate({
         // "margin-top": "370px",
@@ -377,11 +392,37 @@ function resumeSound() {
 
 
 
-//main function
-$(function() {
+
+//Move Basket Using Arrows <- -> [New Update]
+$(document).on("keydown", function(event) {
+    //event.which property returns which keyboard key or mouse button was pressed for the event.
+    switch (event.which) {
+        case 37:
+            if (parseInt($("#basket").css("left")) > 80) {
+                $("#basket").css("left", parseInt($("#basket").css("left")) - 90);
+            }
+            break;
+        case 39:
+            if (parseInt($("#basket").css("left")) < 1080) {
+                $("#basket").css("left", parseInt($("#basket").css("left")) + 90);
+            }
+            break;
+    }
+});
+
+//end move using keyboard
+
+
+// SELECT LEVEL AND START LEVEL 
+function selectLevel() {
     if (localStorage.getItem("LevelType") == "Normal") {
         div = $("#container");
         div.css("background", " url('../Images/14.jpg')");
+        div.css("background-size", "cover");
+        div.css("background-repeat", "round");
+    } else {
+        div = $("#container");
+        div.css("background", " url('../Images/Dog-House-Cartoon-1920x1200.jpg')");
         div.css("background-size", "cover");
         div.css("background-repeat", "round");
     }
@@ -391,5 +432,83 @@ $(function() {
 
     level.start();
     BasketMove();
+
+}
+//main function
+$(function() {
+    // change background for normal level
+
+
+    selectLevel();
+
+
+    //Pause [New Update]
+    $("#Pause").on("click", function() {
+        $("#PauseDiv").css("display", "block");
+        level.pouse();
+    });
+    //resume [New Update]
+    $("#Resume").on("click", function() {
+        level.resume();
+        $("#PauseDiv").css("display", "none");
+    });
+    //Play Again  [New Update]
+    $("#btnStart").on("click", function() {
+        $("#easy").css("display", "initial");
+        $("#hard").css("display", "initial");
+    });
+
+
+    $("#easy").click(function() {
+
+        localStorage.setItem("LevelType", "easy");
+        $("#back").css("display", "none");
+        $("#WinLoseDiv").css("display", "none");
+        selectLevel();
+    });
+
+
+
+    $("#hard").click(function() {
+
+        localStorage.setItem("LevelType", "Normal");
+        $("#back").css("display", "none");
+        $("#WinLoseDiv").css("display", "none");
+        selectLevel();
+    });
+    //Easy Mode (btn in modal)  [New Update]
+    $("#btnstarteasy").on("click", function() {
+
+
+        window.location.href = "Game.html";
+        //same previous name
+        var userName = document.getElementById('txtUserNameEasy').value;
+        var player = new Player(userName);
+        var lev1 = new Leval(20, "easy", player);
+        window.location.href = "Game.html";
+        lev1.start();
+
+    });
+
+
+    //Hard Mode (btn in modal)  [New Update]
+    $("#btnstarthard").on("click", function() {
+
+        window.location.href = "Game.html";
+        //same previous name
+        var userName = document.getElementById('txtUserNameHard').value;
+        var player = new Player(userName);
+        var lev1 = new Leval(20, "hard", player);
+        window.location.href = "Game.html";
+        lev1.start();
+
+    });
+    //Exit  [New Update]
+    $("#btnExit").on("click", function() {
+        //open(location, '_self').close();  
+        //window.open('', '_self', '');
+        //window.close();
+        window.top.close();
+    });
 
 });
