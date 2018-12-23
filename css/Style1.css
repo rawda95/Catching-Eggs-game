@@ -1,13 +1,13 @@
 /* reset Page */
-html,body 
-{
+
+html,
+body {
     width: 100%;
     height: 100%;
     margin: 0;
 }
 
-#container 
-{
+#container {
     height: 100%;
     width: 100%;
     background: url('../Images/Dog-House-Cartoon-1920x1200.jpg');
@@ -15,8 +15,7 @@ html,body
     background-repeat: round;
 }
 
-#scorebar 
-{
+#scorebar {
     margin-top: 20px;
     display: inline-block;
     font-weight: bold;
@@ -25,37 +24,33 @@ html,body
     font-size: xx-large;
 }
 
-#UserName 
-{
+#UserName {
     color: sienna;
 }
 
-#l 
-{
+#l {
     float: right;
     margin-left: 385px;
 }
 
-#s 
-{
+#s {
     margin-left: 200px;
     word-spacing: 0px;
 }
-#lf
-{
+
+#lf {
     display: inline;
     position: relative;
     bottom: 17px;
     right: 12px;
 }
-#score 
-{
+
+#score {
     text-align: left;
     color: sienna;
 }
 
-.egg 
-{
+.egg {
     position: absolute;
     top: 18%;
     height: 8%;
@@ -68,38 +63,31 @@ html,body
     background-repeat: round;
 }
 
-#egg1 
-{
+#egg1 {
     left: 190px;
 }
 
-#egg2 
-{
+#egg2 {
     left: 380px;
 }
 
-#egg3 
-{
+#egg3 {
     left: 570px;
 }
 
-#egg4 
-{
+#egg4 {
     left: 760px;
 }
 
-#egg5 
-{
+#egg5 {
     left: 950px;
 }
 
-#egg6 
-{
+#egg6 {
     left: 1140px;
 }
 
-.chick 
-{
+.chick {
     margin-left: 370px;
     display: block;
     position: absolute;
@@ -112,8 +100,7 @@ html,body
     z-index: 15;
 }
 
-#floor 
-{
+#floor {
     position: absolute;
     height: 7%;
     width: 100%;
@@ -121,8 +108,7 @@ html,body
     z-index: 10;
 }
 
-#basket 
-{
+#basket {
     height: 100px;
     width: 93px;
     position: absolute;
@@ -133,8 +119,7 @@ html,body
     text-align: center;
 }
 
-#basketscore 
-{
+#basketscore {
     position: absolute;
     color: #424242;
     font-size: 30px;
@@ -142,14 +127,12 @@ html,body
     left: 30%;
 }
 
-#life 
-{
+#life {
     text-align: right;
     color: sienna;
 }
 
-#GameOver 
-{
+#GameOver {
     border: 0;
     position: sticky;
     height: 30%;
@@ -164,14 +147,14 @@ html,body
     cursor: pointer;
     font-family: angrybirds;
     font-size: -webkit-xxx-large;
-    outline:none;
+    outline: none;
 }
-#GameOver:hover
-{
+
+#GameOver:hover {
     color: bisque
 }
-#Pause
-{
+
+#Pause {
     border: 0;
     position: sticky;
     height: 50px;
@@ -183,14 +166,14 @@ html,body
     font-size: 25px;
     cursor: pointer;
     font-family: angrybirds;
-    outline:none;
+    outline: none;
 }
-#Pause:hover
-{
+
+#Pause:hover {
     color: gold;
 }
-#PauseDiv
-{
+
+#PauseDiv {
     border: 0;
     position: absolute;
     height: 25%;
@@ -205,25 +188,25 @@ html,body
     cursor: pointer;
     font-family: angrybirds;
     font-size: -webkit-xxx-large;
-    outline:none;
+    outline: none;
     font-family: angrybirds;
 }
-#PauseDiv:hover
-{
+
+#PauseDiv:hover {
     color: gold;
     font-family: angrybirds;
     cursor: pointer;
 }
-#p
-{
+
+#p {
     position: relative;
     left: 76px;
     top: 17px;
     font-family: angrybirds;
     font-size: larger;
 }
-#Resume
-{
+
+#Resume {
     background-color: gold;
     position: relative;
     left: 70px;
@@ -233,16 +216,15 @@ html,body
     top: 9px;
     font-family: angrybirds;
     font-size: 23px;
-    outline:none;
+    outline: none;
     cursor: pointer;
 }
-#Resume:hover
-{
+
+#Resume:hover {
     color: darkslategray;
 }
 
-.WinLoseDiv
-{
+.WinLoseDiv {
     height: 100%;
     width: 100%;
     background-size: cover;
@@ -259,10 +241,9 @@ html,body
     margin-left: 446px;
     z-index: 9000;
     position: absolute;
-    
 }
-#readyDiv
-{
+
+#readyDiv {
     background-size: cover;
     background-repeat: round;
     background-color: white;
@@ -280,8 +261,8 @@ html,body
     top: 249px;
     border: 2px solid black;
 }
-#menu
-{
+
+#menu {
     position: fixed;
     top: 280px;
     left: 460px;
@@ -290,8 +271,7 @@ html,body
     z-index: 10000;
 }
 
-.back
-{
+.back {
     display: block;
     background: rgba(43, 46, 56, 0.9);
     -webkit-backface-visibility: hidden;
@@ -304,8 +284,7 @@ html,body
     left: -5000px;
 }
 
-.WL
-{
+.WL {
     display: block;
     margin-left: 30px;
     position: absolute;
@@ -315,8 +294,7 @@ html,body
     color: gold;
 }
 
-.readySpan
-{
+.readySpan {
     width: 596px;
     display: block;
     margin-left: -164px;
@@ -326,8 +304,8 @@ html,body
     font-size: 87px;
     color: gold;
 }
-#ws
-{
+
+#ws {
     display: block;
     margin-left: 100px;
     position: absolute;
@@ -337,11 +315,15 @@ html,body
     color: gold;
 }
 
-#btnStart,#easy,#hard,#btnAbout,#btnExit,#hm
-{
-    width:400px;
+#btnStart,
+#easy,
+#hard,
+#btnAbout,
+#btnExit,
+#hm {
+    width: 400px;
     height: 60px;
-    outline:none;
+    outline: none;
     font-family: angrybirds;
     font-size: -webkit-xxx-large;
     background: darkblue;
@@ -350,27 +332,34 @@ html,body
     border-radius: 20px;
     margin-bottom: 10px;
 }
-#btnExit
-{
+
+#btnExit {
     margin-left: 73px;
     width: 255px;
 }
-#easy,#hard
-{
+
+#easy,
+#hard {
     width: 200px;
     display: none;
 }
-a
-{
+
+a {
     text-decoration: none;
 }
-#btnStart:hover,#easy:hover,#hard:hover,#btnAbout:hover,#btnExit:hover
-{
+
+#btnStart:hover,
+#easy:hover,
+#hard:hover,
+#btnAbout:hover,
+#btnExit:hover {
     background-color: #EB4B4B;
     border-color: #EB4B4B;
 }
 
+
 /**/
+
 body {
     margin: 0px
 }
@@ -483,9 +472,7 @@ body {
     top: 75%;
 }
 
-
-@font-face 
-{
+@font-face {
     font-family: angrybirds;
     src: url('../font/angrybirds-regular.ttf');
 }

@@ -34,8 +34,9 @@ function Leval(target, type, player) {
     // check for win or not 
     this.end = function() {
 
-        $("#back").css("display", "block");
-        $("#WinLoseDiv").css("display", "block");
+        $("#statius1").css("display", "block");
+        //$("#basket").css("z-index", "-1");
+        $("#popUp").css("display", "block");
         $("body").off("mousemove");
 
         divText = $("#WL");
@@ -469,8 +470,8 @@ $(function() {
     $("#easy").click(function() {
 
         localStorage.setItem("LevelType", "easy");
-        $("#back").css("display", "none");
-        $("#WinLoseDiv").css("display", "none");
+        $("#statius1").css("display", "none");
+        $("#popUp").css("display", "none");
         selectLevel();
     });
 
@@ -479,21 +480,27 @@ $(function() {
     $("#hard").click(function() {
 
         localStorage.setItem("LevelType", "Normal");
-        $("#back").css("display", "none");
-        $("#WinLoseDiv").css("display", "none");
+        $("#statius1").css("display", "none");
+        $("#popUp").css("display", "none");
         selectLevel();
     });
     //Easy Mode (btn in modal)  [New Update]
     $("#btnstarteasy").on("click", function() {
 
+        /*
+                window.location.href = "Game.html";
+                //same previous name
+                var userName = document.getElementById('txtUserNameEasy').value;
+                var player = new Player(userName);
+                var lev1 = new Leval(20, "easy", player);
+                window.location.href = "Game.html";
+                lev1.start();
+                */
 
-        window.location.href = "Game.html";
-        //same previous name
-        var userName = document.getElementById('txtUserNameEasy').value;
-        var player = new Player(userName);
-        var lev1 = new Leval(20, "easy", player);
-        window.location.href = "Game.html";
-        lev1.start();
+        localStorage.setItem("LevelType", "Normal");
+        $("#statius1").css("display", "none");
+        $("#popUp").css("display", "none");
+        selectLevel();
 
     });
 
@@ -501,6 +508,7 @@ $(function() {
     //Hard Mode (btn in modal)  [New Update]
     $("#btnstarthard").on("click", function() {
 
+        /*
         window.location.href = "Game.html";
         //same previous name
         var userName = document.getElementById('txtUserNameHard').value;
@@ -508,6 +516,12 @@ $(function() {
         var lev1 = new Leval(20, "hard", player);
         window.location.href = "Game.html";
         lev1.start();
+        */
+
+        localStorage.setItem("LevelType", "Normal");
+        $("#statius1").css("display", "none");
+        $("#popUp").css("display", "none");
+        selectLevel();
 
     });
 

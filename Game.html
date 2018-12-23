@@ -4,23 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Egg Farm</title>
-    <link href="css/level.css" rel="stylesheet" />
+    <link href="css/Style1.css" rel="stylesheet" />
     <link href="css/Style.css" rel="stylesheet" />
-
-
     <script src="js/jquery-3.2.1.js"></script>
 
     <script src="js/script.js"></script>
+    <script src="js/Remodal-master/dist/remodal.min.js"></script>
     <link rel="stylesheet" href="js/Remodal-master/dist/remodal.css">
     <link rel="stylesheet" href="js/Remodal-master/dist/remodal-default-theme.css">
-
 </head>
 
 <body>
     <!--Container-->
     <div id="container">
-        <button type="button" style="z-index:-1;opacity:0;position: absolute;left:-1000px;" id="btn"></button>
-
 
         <!--Modal easy-->
         <div class="remodal" data-remodal-id="modal1">
@@ -57,7 +53,7 @@
             </p>
             <br>
             <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
-            <button id="btnstarthard" data-remodal-action="confirm" class="remodal-confirm">OK</button>
+            <button id="btnExit" data-remodal-action="confirm" class="remodal-confirm">OK</button>
             <!---->
         </div>
 
@@ -91,10 +87,10 @@
         </div>
 
         <!--WinLose Div[New Update]-->
-        <div id="back"></div>
-        <div id="WinLoseDiv">
+        <div id="statius1" style="display:none" class="back"></div>
+        <div id="popUp" style="display:none" class="WinLoseDiv">
             <div id="menu">
-                <span id="WL">Congratulations!</span>
+                <span id="" class="WL">Congratulations!</span>
                 <span id="ws">Your Score is : 50</span>
                 <button id="btnStart">Play Again ?</button>
                 <br />
@@ -110,10 +106,15 @@
                 <button id="btnExit">Exit</button>
             </div>
         </div>
+        <!--Ready?-->
+        <div id="readyTitle" class="back"></div>
+        <div id="readyDiv" class="WinLoseDiv">
+            <span id="" class="readySpan">Please Ready ... !</span>
+        </div>
+
 
     </div>
 
 </body>
-
 
 </html>
