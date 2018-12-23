@@ -5,7 +5,7 @@ function play_audio(task) {
     if (task == 'play') {
         $(".my_audio").trigger('play');
     } // play audio
-    if (task == 'stop') {
+    else if (task == 'stop') {
         $(".my_audio").trigger('pause');
         $(".my_audio").prop("currentTime", 0);
     } // stop audio
@@ -15,6 +15,7 @@ function play_audio(task) {
 
 
 $(function() {
+    play_audio('play');
     $(".playaudio").on("click", function() {
         play_audio('play');
         $(".stopaudio").css("display", "inherit");

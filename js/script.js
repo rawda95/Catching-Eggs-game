@@ -43,8 +43,8 @@ function Leval(target, type, player) {
             //else 
             // show div lose 
             // play audio for lose
-            var audio = new Audio("/Audio/1.wav");
-            audio.play();
+            var loser = new Audio("/Audio/loser.mp3");
+            loser.play();
         }
 
 
@@ -140,9 +140,9 @@ function Egge(color, id) {
         this.image.src = "/Images/egg-icon8.png";
 
     } else if (color == "goold") {
-        this.image.src = "/Images/32390-egg-icon5.png";
+        this.image.src = "/Images/easter-egg-3-icon3.png";
     } else if (color == "black") {
-        this.image.src = "/Images/easter-egg-1-icon4.png";
+        this.image.src = "/Images/black1.png";
     }
 
     // randow postion on div 
@@ -159,6 +159,8 @@ function Egge(color, id) {
 
 
     // drow the egg
+    duck = new Audio("/Audio/duck.mp3");
+
     this.drow = function() {
 
             // 
@@ -170,6 +172,15 @@ function Egge(color, id) {
             this.image.style.marginRight = "30px";
             this.image.style.marginLeft = "30px";
             //this.image.style.marginTop = "30px";
+
+
+            // add audio 
+            const playPromise = duck.play();
+            if (playPromise !== null) {
+                playPromise.catch(() => {
+                    duck.play();
+                })
+            }
 
             this.image.style.left = this.posx + "px";
 
@@ -212,12 +223,12 @@ function Anmation(speed, player, img, incScore) {
     //mov += 40;
     img.animate({
         // "margin-top": "370px",
-        "top": 440 + 'px',
+        "top": 530 + 'px',
 
     }, {
         duration: speed,
         step: function() {
-            console.log(this);
+            // console.log(this);
             eggTop = parseInt($(this).css("top"));
             basketTop = parseInt(basket.css("top")) + 60;
             eggLeft = parseInt($(this).css("left"));
@@ -229,7 +240,7 @@ function Anmation(speed, player, img, incScore) {
             if (basketTop <= (eggTop + eggHeight) && (eggLeft >= basketLeft &&
                     eggLeft <= (basketWidth + basketLeft))) {
 
-                $(this).hide();
+                $(this).remove();
                 player.score += incScore;
                 incScore = 0;
                 $("#s").text("Score:" + player.score);
@@ -320,12 +331,26 @@ function Timer(callback, delay) {
 }
 //end timer 
 
+
+// ppouse all sound 
+
+
+
+
+function pouseSound() {
+
+
+}
+//end pouse all sound 
+
+
+
 //main function
 $(function() {
 
     player = new Player(localStorage.getItem("PlayerName"));
     level = new Leval(20, localStorage.getItem("LevelType"), player);
-    BasketMove();
     level.start();
+    BasketMove();
 
 });
