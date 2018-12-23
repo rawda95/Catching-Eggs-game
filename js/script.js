@@ -185,47 +185,47 @@ function Egge(color, id) {
 
     this.drow = function() {
 
-            // 
-            this.image.id = id;
-            this.image.className = "eggs";
-            this.image.style.width = 50 + "px";
-            this.image.style.height = 50 + "px";
-            this.image.style.position = 'absolute';
-            this.image.style.marginRight = "30px";
-            this.image.style.marginLeft = "30px";
-            //this.image.style.marginTop = "30px";
-            this.image.style.left = this.posx + "px";
+        // 
+        this.image.id = id;
+        this.image.className = "eggs";
+        this.image.style.width = 50 + "px";
+        this.image.style.height = 50 + "px";
+        this.image.style.position = 'absolute';
+        this.image.style.marginRight = "30px";
+        this.image.style.marginLeft = "30px";
+        //this.image.style.marginTop = "30px";
+        this.image.style.left = this.posx + "px";
 
 
 
-            // add audio 
-            if (soundflag) {
+        // add audio 
+        if (soundflag) {
 
-                var btn = document.getElementById('btn');
+            var btn = document.getElementById('btn');
+            duck = new Audio("/Audio/duck.mp3");
+            duck.play();
+
+            document.addEventListener(btn, function() {
                 duck = new Audio("/Audio/duck.mp3");
-                duck.play();
+                playPromise = duck.play();
 
-                document.addEventListener(btn, function() {
-                    duck = new Audio("/Audio/duck.mp3");
-                    const playPromise = duck.play();
+                if (playPromise !== null) {
+                    playPromise.catch(() => {
+                        duck.play();
+                    });
+                }
 
-                    if (playPromise !== null) {
-                        playPromise.catch(() => {
-                            duck.play();
-                        })
-                    }
-
-                }, false);
-                btn.click();
-            }
-
-
-            // image.hight = "100px";
-            $("#container").append(this.image);
-
-
+            }, false);
+            btn.click();
         }
-        // var audio = new Audio("/Audio/EggCracking.wav");
+
+
+        // image.hight = "100px";
+        $("#container").append(this.image);
+
+
+    };
+    // var audio = new Audio("/Audio/EggCracking.wav");
 
     this.anmation = function(speed, player) {
 
@@ -241,7 +241,7 @@ function Egge(color, id) {
 
         Anmation(speed, player, $(this.image), incScore);
 
-    }
+    };
 
 
 
@@ -310,7 +310,7 @@ Egge.destroy = function(id) {
     }, 2000);
 
 
-}
+};
 
 
 
