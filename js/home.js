@@ -16,6 +16,8 @@ function play_audio(task) {
 
 $(function() {
     play_audio('play');
+
+
     $(".playaudio").on("click", function() {
         play_audio('play');
         $(".stopaudio").css("display", "inherit");
@@ -35,9 +37,25 @@ $(function() {
     eggmove = $(".eggmove");
     chicken_move = $(".chicken_move");
     chichencounter = 850;
+    validspan = $(".validspan");
+
 
 
     //end variables
+    entername.on("blur", function() {
+        if (entername.val() == "") {
+            validspan.css({
+                display: "inherit"
+            });
+            entername.focus();
+        } else {
+            validspan.css({
+                display: "none"
+            });
+        }
+    }); // enter name textbox validation
+
+
 
     entername.addClass("textaddclass"); //add class for name textbox
     normalbtn.addClass("btnaddclass1"); //add class for normal button

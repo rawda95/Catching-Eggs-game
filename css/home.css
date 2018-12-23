@@ -9,6 +9,16 @@ body {
     background-repeat: round;
 }
 
+.validspan {
+    color: brown;
+    font-size: 18px;
+    padding-top: 10px;
+    padding-left: 20px;
+    font-weight: bold;
+    font-family: cursive;
+    display: none;
+}
+
 .gamesound {
     padding-left: 30px;
     padding-top: 30px;
