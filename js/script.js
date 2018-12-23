@@ -369,9 +369,16 @@ function resumeSound() {
 
 //main function
 $(function() {
+    if (localStorage.getItem("LevelType") == "Normal") {
+        div = $("#container");
+        div.css("background", " url('../Images/14.jpg')");
+        div.css("background-size", "cover");
+        div.css("background-repeat", "round");
+    }
     soundflag = true;
     player = new Player(localStorage.getItem("PlayerName"));
     level = new Leval(20, localStorage.getItem("LevelType"), player);
+
     level.start();
     BasketMove();
 
