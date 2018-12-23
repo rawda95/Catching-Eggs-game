@@ -43,8 +43,10 @@ function Leval(target, type, player) {
             //else 
             // show div lose 
             // play audio for lose
-            var loser = new Audio("/Audio/loser.mp3");
-            loser.play();
+            if (soundflag) {
+                var loser = new Audio("/Audio/loser.mp3");
+                loser.play();
+            }
         }
 
 
@@ -128,6 +130,9 @@ function Leval(target, type, player) {
 
 
 
+
+
+
 //class for egge
 function Egge(color, id) {
 
@@ -159,7 +164,6 @@ function Egge(color, id) {
 
 
     // drow the egg
-    duck = new Audio("/Audio/duck.mp3");
 
     this.drow = function() {
 
@@ -175,11 +179,14 @@ function Egge(color, id) {
 
 
             // add audio 
-            const playPromise = duck.play();
-            if (playPromise !== null) {
-                playPromise.catch(() => {
-                    duck.play();
-                })
+            if (soundflag) {
+                duck = new Audio("/Audio/duck.mp3");
+                const playPromise = duck.play();
+                if (playPromise !== null) {
+                    playPromise.catch(() => {
+                        duck.play();
+                    })
+                }
             }
 
             this.image.style.left = this.posx + "px";
@@ -339,6 +346,10 @@ function Timer(callback, delay) {
 
 function pouseSound() {
 
+    soundflag = false;
+    var sounds = document.getElementsByTagName('audio');
+    for (i = 0; i < sounds.length; i++) sounds[i].pause();
+
 
 }
 //end pouse all sound 
@@ -347,7 +358,7 @@ function pouseSound() {
 
 //main function
 $(function() {
-
+    soundflag = true;
     player = new Player(localStorage.getItem("PlayerName"));
     level = new Leval(20, localStorage.getItem("LevelType"), player);
     level.start();
