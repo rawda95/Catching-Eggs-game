@@ -205,18 +205,18 @@ function Egge(color, id) {
             duck = new Audio("/Audio/duck.mp3");
             duck.play();
 
-            document.addEventListener(btn, function() {
-                duck = new Audio("/Audio/duck.mp3");
-                playPromise = duck.play();
+            //document.addEventListener(btn, function() {
+            //  duck = new Audio("/Audio/duck.mp3");
+            //playPromise = duck.play();
 
-                if (playPromise !== null) {
-                    playPromise.catch(() => {
-                        duck.play();
-                    });
-                }
+            //if (playPromise !== null) {
+            //  playPromise.catch(() => {
+            //    duck.play();
+            //});
+            // }
 
-            }, false);
-            btn.click();
+            //}, false);
+            // btn.click();
         }
 
 
@@ -437,9 +437,16 @@ function selectLevel() {
 //main function
 $(function() {
     // change background for normal level
+    setTimeout(function() {
+
+        $("#readyTitle").css("display", "none");
+        $("#readyDiv").css("display", "none");
+        selectLevel();
 
 
-    selectLevel();
+    }, 1000);
+
+
 
 
     //Pause [New Update]
@@ -501,6 +508,14 @@ $(function() {
         var lev1 = new Leval(20, "hard", player);
         window.location.href = "Game.html";
         lev1.start();
+
+    });
+
+
+    //home btn in div 
+    $("#hm").click(function() {
+        window.location.href = "home.html";
+
 
     });
     //Exit  [New Update]
