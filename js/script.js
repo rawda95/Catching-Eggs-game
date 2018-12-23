@@ -23,13 +23,13 @@ function Leval(target, type, player) {
 
     this.DrowEgg = function(color, anmationSpped) {
 
-            e1 = new Egge(color, idOfEgge);
-            e1.drow();
-            e1.anmation(anmationSpped, this.player);
-            idOfEgge++;
+        e1 = new Egge(color, idOfEgge);
+        e1.drow();
+        e1.anmation(anmationSpped, this.player);
+        idOfEgge++;
 
 
-        } //end of drow egg
+    }; //end of drow egg
 
     // check for win or not 
     this.end = function() {
@@ -41,7 +41,7 @@ function Leval(target, type, player) {
             //play win sound 
             if (soundflag) {
                 var win = new Audio("/Audio/winn.mp3");
-                loser.play();
+                win.play();
             }
         } else {
             //else 
@@ -54,7 +54,7 @@ function Leval(target, type, player) {
         }
 
 
-    }
+    };
 
 
     // setInterval for all type of eggs
@@ -76,7 +76,7 @@ function Leval(target, type, player) {
                 obj.DrowEgg('black', 1500);
             }, 2300);
         }
-    }
+    };
 
     //start the level 
     this.start = function() {
@@ -95,7 +95,7 @@ function Leval(target, type, player) {
 
 
 
-    }
+    };
 
     //pouse the game 
     this.pouse = function() {
@@ -112,7 +112,7 @@ function Leval(target, type, player) {
         obj = this;
         obj.timer.pause();
 
-    }
+    };
 
     //resume after pouse 
     this.resume = function() {
@@ -125,7 +125,7 @@ function Leval(target, type, player) {
         BasketMove();
 
 
-    }
+    };
 
 
 

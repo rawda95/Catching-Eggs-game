@@ -89,31 +89,31 @@ $(function() {
 
     function headanimate() {
         mainhead.animate({
-                opacity: "0.3"
+            opacity: "0.3"
+        }, 1000, "linear", function() {
+            mainhead.addClass("headaddclass");
+            mainhead.removeClass("headremoveclass");
+            mainhead.animate({
+                opacity: "1"
             }, 1000, "linear", function() {
-                mainhead.addClass("headaddclass");
-                mainhead.removeClass("headremoveclass");
-                mainhead.animate({
-                        opacity: "1"
-                    }, 1000, "linear", function() {
-                        mainhead.removeClass("headaddclass");
-                        mainhead.addClass("headremoveclass");
-                        headanimate()
-                    }) //end animate 2
-            }) //end animate 1   
+                mainhead.removeClass("headaddclass");
+                mainhead.addClass("headremoveclass");
+                headanimate();
+            }); //end animate 2
+        }); //end animate 1   
     } //end function headanimate for head
     headanimate(); // call function headanimate
 
     function egganimate() {
         eggmove.animate({
-                top: "-50"
-            }, 900, "linear", function() {
-                eggmove.animate({
-                        top: "0"
-                    }, 700, "linear", function() {
-                        egganimate()
-                    }) //end animate 2
-            }) //end animate 1 
+            top: "-50"
+        }, 900, "linear", function() {
+            eggmove.animate({
+                top: "0"
+            }, 700, "linear", function() {
+                egganimate();
+            }); //end animate 2
+        }); //end animate 1 
     } //end function egganimate to move egg
     egganimate(); // call function egganimate
 
@@ -122,7 +122,7 @@ $(function() {
             left: chichencounter = chichencounter - 30
         }, 2000, "linear", function() {
             chickenanimate();
-        })
+        });
     } //end chicken animate
     chickenanimate(); // call function chickenanimate
 
