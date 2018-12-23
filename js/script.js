@@ -39,6 +39,10 @@ function Leval(target, type, player) {
         if (target == player.score) {
             // show win div
             //play win sound 
+            if (soundflag) {
+                var win = new Audio("/Audio/winn.mp3");
+                loser.play();
+            }
         } else {
             //else 
             // show div lose 
@@ -340,15 +344,22 @@ function Timer(callback, delay) {
 
 
 // ppouse all sound 
-
-
-
-
 function pouseSound() {
 
     soundflag = false;
     var sounds = document.getElementsByTagName('audio');
     for (i = 0; i < sounds.length; i++) sounds[i].pause();
+
+
+}
+//end pouse all sound 
+
+// ppouse all sound 
+function resumeSound() {
+
+    soundflag = true;
+    var sounds = document.getElementsByTagName('audio');
+    for (i = 0; i < sounds.length; i++) sounds[i].resume();
 
 
 }
