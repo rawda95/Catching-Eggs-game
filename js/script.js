@@ -39,7 +39,7 @@ function Leval(target, type, player) {
         $("#popUp").css("display", "block");
         $("body").off("mousemove");
 
-        divText = $("#WL");
+        divText = $(".WL");
         scoreDiv = $("#ws");
         //if targer == player.score  show div win
         // player win
@@ -97,15 +97,20 @@ function Leval(target, type, player) {
     this.start = function() {
 
         this.DrowEggs();
+        min = 1;
+        sec = 0;
+
         //timer for level 
         this.timer = new Timer(function() {
             clearInterval(white);
             clearInterval(goold);
             clearInterval(black);
+            clearInterval(inter);
 
             // the function to check if he win
             obj.end();
-        }, 30000);
+        }, 61900);
+
 
 
 
@@ -321,7 +326,17 @@ Egge.destroy = function(id) {
 
 
 
+function screenTimer() {
 
+    inter = setInterval(function() {
+        console.log(min + ":" + sec);
+        if (sec == 0) {
+            min--;
+            sec = 60;
+        }
+        sec--;
+    }, 1000);
+}
 
 
 
@@ -355,6 +370,7 @@ function Timer(callback, delay) {
 
     this.pause = function() {
         window.clearTimeout(timerId);
+        clearInterval(inter);
         remaining -= new Date() - start;
     };
 
@@ -362,6 +378,8 @@ function Timer(callback, delay) {
         start = new Date();
         window.clearTimeout(timerId);
         timerId = window.setTimeout(callback, remaining);
+        screenTimer();
+
     };
 
     this.resume();
@@ -437,6 +455,10 @@ function selectLevel() {
 }
 //main function
 $(function() {
+    min = 1;
+    sec = 0;
+
+    inter = "";
     // change background for normal level
     setTimeout(function() {
 
