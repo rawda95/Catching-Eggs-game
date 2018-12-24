@@ -105,7 +105,7 @@ function Leval(target, type, player) {
             clearInterval(white);
             clearInterval(goold);
             clearInterval(black);
-            clearInterval(inter);
+            clearInterval(timerInterval);
 
             // the function to check if he win
             obj.end();
@@ -326,18 +326,6 @@ Egge.destroy = function(id) {
 
 
 
-function screenTimer() {
-
-    inter = setInterval(function() {
-        console.log(min + ":" + sec);
-        if (sec == 0) {
-            min--;
-            sec = 60;
-        }
-        sec--;
-    }, 1000);
-}
-
 
 
 
@@ -364,13 +352,27 @@ function BasketMove() {
 }
 
 
+
+function screenTimer() {
+
+    timerInterval = setInterval(function() {
+        document.getElementById("time").innerHTML = min + ":" + sec;
+
+        if (sec == 0) {
+            min--;
+            sec = 60;
+        }
+        sec--;
+    }, 1000);
+}
+
 //timer function 
 function Timer(callback, delay) {
     var timerId, start, remaining = delay;
 
     this.pause = function() {
         window.clearTimeout(timerId);
-        clearInterval(inter);
+        clearInterval(timerInterval);
         remaining -= new Date() - start;
     };
 
@@ -434,6 +436,9 @@ $(document).on("keydown", function(event) {
 
 // SELECT LEVEL AND START LEVEL 
 function selectLevel() {
+
+    min = 1;
+    sec = 0;
     if (localStorage.getItem("LevelType") == "Normal") {
         div = $("#container");
         div.css("background", " url('../Images/14.jpg')");
@@ -446,6 +451,8 @@ function selectLevel() {
         div.css("background-repeat", "round");
     }
     soundflag = true;
+    $("#s").text("Score:" + 0);
+
     player = new Player(localStorage.getItem("PlayerName"));
     level = new Leval(20, localStorage.getItem("LevelType"), player);
 
@@ -453,12 +460,26 @@ function selectLevel() {
     BasketMove();
 
 }
+
+//[New 2] Audio in Game
+$(".my_audio").trigger('load');
+
+function play_audio(task) {
+    if (task == 'play') {
+        $(".my_audio").trigger('play');
+    } // play audio
+    else if (task == 'stop') {
+        $(".my_audio").trigger('pause');
+        $(".my_audio").prop("currentTime", 0);
+    } // stop audio
+} // end function play and stop audio
+
 //main function
 $(function() {
     min = 1;
     sec = 0;
 
-    inter = "";
+    timerInterval = "";
     // change background for normal level
     setTimeout(function() {
 
@@ -518,11 +539,12 @@ $(function() {
                 window.location.href = "Game.html";
                 lev1.start();
                 */
-
-        localStorage.setItem("LevelType", "Normal");
-        $("#statius1").css("display", "none");
-        $("#popUp").css("display", "none");
-        selectLevel();
+        /*
+                localStorage.setItem("LevelType", "Normal");
+                $("#statius1").css("display", "none");
+                $("#popUp").css("display", "none");
+                selectLevel();
+                */
 
     });
 
@@ -539,12 +561,12 @@ $(function() {
         window.location.href = "Game.html";
         lev1.start();
         */
-
-        localStorage.setItem("LevelType", "Normal");
-        $("#statius1").css("display", "none");
-        $("#popUp").css("display", "none");
-        selectLevel();
-
+        /*
+                localStorage.setItem("LevelType", "Normal");
+                $("#statius1").css("display", "none");
+                $("#popUp").css("display", "none");
+                selectLevel();
+        */
     });
 
 
@@ -559,7 +581,22 @@ $(function() {
         //open(location, '_self').close();  
         //window.open('', '_self', '');
         //window.close();
-        window.top.close();
+        // window.top.close();
+        window.location.href = "home.html";
+
     });
+
+    play_audio('play');
+
+    $(".playaudio").on("click", function() {
+        play_audio('play');
+        $(".stopaudio").css("display", "inherit");
+        $(".playaudio").css("display", "none");
+    }); //play audio button
+    $(".stopaudio").on("click", function() {
+        play_audio('stop');
+        $(".playaudio").css("display", "inherit");
+        $(".stopaudio").css("display", "none");
+    }); //stop audio button
 
 });

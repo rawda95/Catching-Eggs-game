@@ -18,44 +18,6 @@
     <!--Container-->
     <div id="container">
 
-        <!--Modal easy-->
-        <div class="remodal" data-remodal-id="modal1">
-            <button data-remodal-action="close" class="remodal-close"></button>
-            <h1 style="font-size:-webkit-xxx-large">Easy</h1>
-            <p style="font-size:xx-large">
-                Are You Ready to start ?
-            </p>
-            <br>
-            <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
-            <button id="btnstarteasy" data-remodal-action="confirm" class="remodal-confirm">OK</button>
-            <!---->
-        </div>
-        <!--Modal Hard-->
-        <div class="remodal" data-remodal-id="modal2">
-            <button data-remodal-action="close" class="remodal-close"></button>
-            <h1 style="font-size:-webkit-xxx-large">Hard</h1>
-            <p style="font-size:xx-large">
-                Are You Ready to start ?
-            </p>
-            <br>
-            <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
-            <button id="btnstarthard" data-remodal-action="confirm" class="remodal-confirm">OK</button>
-            <!---->
-        </div>
-        <!--Modal Exit-->
-        <div class="remodal" data-remodal-id="modal3">
-            <button data-remodal-action="close" class="remodal-close"></button>
-            <h1 style="font-size:-webkit-xxx-large">Start</h1>
-            <label style="font-size:xx-large">Enter Your Name :</label>
-
-            <p style="font-size:xx-large">
-                Are You Ready to start ?
-            </p>
-            <br>
-            <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
-            <button id="btnExit" data-remodal-action="confirm" class="remodal-confirm">OK</button>
-            <!---->
-        </div>
 
         <!---->
 
@@ -66,6 +28,17 @@
                 Score :<span id="score">0</span>
             </span>
             <button id="Pause">Pause ■</button>
+            <!--Sound-->
+            <!-- home page sound-->
+            <div class="gamesound">
+                <audio class="my_audio" loop autoplay>
+                    <source src="Audio/Gaiety_in_the_Golden_Age.mp3" type="audio/mpeg">
+                    <source src="Audio/Gaiety_in_the_Golden_Age.mp3" type="audio/ogg">
+                </audio>
+                <img src="Images/volume-on%20(2).png" class="playaudio" />
+                <img src="Images/volume-on%20(1).png" class="stopaudio" />
+            </div>
+            <!---->
             <span id="l">
                 <img src="Images/egg-icon44.png">
                 <span id="lf">Target: <span id="life">0</span></span>
@@ -77,6 +50,11 @@
         </div>
         <!--Footer-->
         <div id="floor"></div>
+        <!--New Update-->
+        <!--Timer-->
+        <div id="Timer">
+            <span id="time"></span>
+        </div>
         <!--Game Over-->
         <button id="GameOver">Game Over</button>
         <!--PasueDiv-->
@@ -111,10 +89,7 @@
         <div id="readyDiv" class="WinLoseDiv">
             <span id="" class="readySpan">Please Ready ... !</span>
         </div>
-
-
     </div>
-
 </body>
 
 </html>
